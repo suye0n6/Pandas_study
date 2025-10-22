@@ -57,3 +57,26 @@ print(s.value_counts())
 s = pd.Series(['A','B','C','Aaba','Baca', np.nan, 'CABA', 'dog', 'cat'])
 
 print(s.str.lower())
+
+#concat
+df = pd.DataFrame(np.random.randn(10, 4))
+
+pieces = [df[:3], df[3:7], df[7:]]
+
+print(pd.concat(pieces))
+
+left = pd.DataFrame({'key' : ['foo','foo'], 'lavl' : [1,2]})
+print(left)
+
+right = pd.DataFrame({'key': ['foo', 'foo'], 'rval': [4, 5]})
+
+merged = pd.merge(left, right, on='key')
+
+print(merged)
+
+#append
+df = pd.DataFrame(np.random.randn(8, 4), columns=['A', 'B', 'C', 'D'])
+
+s = df.iloc[3]
+
+df.append(s, ignore_index=True)
